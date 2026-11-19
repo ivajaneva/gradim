@@ -1,0 +1,17 @@
+flowchart TB
+  subgraph M["Mobilna aplikacija – Flutter (Android / iOS)"]
+    direction TB
+    UI["Zasloni (UI)"] --> ST["Stanje (Riverpod)"]
+    ST --> REP["Repozitoriji – edini dostop do podatkov"]
+    ST --> SVC["Storitve naprave<br/>kamera · izbira kontakta · lokalni opomniki · deljenje"]
+    REP --> LC[("Lokalna kopija<br/>drift / SQLite")]
+  end
+  subgraph S["Supabase – zaledje"]
+    direction LR
+    AUTH["Auth<br/>prijava, JWT"] ~~~ DB[("PostgreSQL<br/>tabele + RLS<br/>prožilci, SQL funkcije")] ~~~ STO["Storage<br/>fotografije"] ~~~ EF["Edge Functions"]
+  end
+  REP == "supabase_flutter · HTTPS" ==> S
+  DB -. "nov zahtevek" .-> EF
+  EF -- "pošlji obvestilo" --> FCM["Firebase Cloud Messaging"]
+  FCM -. "push" .-> M
+  SVC -. "sistemsko deljenje" .-> V["Viber – izvajalec"]

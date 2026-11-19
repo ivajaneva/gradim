@@ -1,0 +1,19 @@
+graph UC {
+node[fontname="Helvetica",fontsize=12]; edge[color="#555555"];
+box[shape=box,style="rounded",color="#999999",label="Gradim",labelloc=t,fontsize=15,width=4.6,height=8.54,pos="5,3.88!"];
+d0[shape=ellipse,style=filled,fillcolor="#FFF4EA",width=3.7,height=0.45,label="Ustvari projekt in dodeli inženirje",pos="5,7.40!"]; direktor:e--d0:w;
+d1[shape=ellipse,style=filled,fillcolor="#FFF4EA",width=3.7,height=0.45,label="Pregleda vse projekte podjetja",pos="5,6.78!"]; direktor:e--d1:w;
+d2[shape=ellipse,style=filled,fillcolor="#FFF4EA",width=3.7,height=0.45,label="Odobri ali zavrne zahtevek za material",pos="5,6.16!"]; direktor:e--d2:w;
+d3[shape=ellipse,style=filled,fillcolor="#FFF4EA",width=3.7,height=0.45,label="Pregleda statistiko podjetja",pos="5,5.54!"]; direktor:e--d3:w;
+d4[shape=ellipse,style=filled,fillcolor="#FFF4EA",width=3.7,height=0.45,label="Pregleda imenik izvajalcev",pos="5,4.92!"]; direktor:e--d4:w;
+i0[shape=ellipse,style=filled,fillcolor="#EEF5FC",width=3.7,height=0.45,label="Pregleda svoje projekte",pos="5,3.68!"]; i0:e--inzenir:w;
+i1[shape=ellipse,style=filled,fillcolor="#EEF5FC",width=3.7,height=0.45,label="Upravlja faze in naloge",pos="5,3.06!"]; i1:e--inzenir:w;
+i2[shape=ellipse,style=filled,fillcolor="#EEF5FC",width=3.7,height=0.45,label="Upravlja termine v koledarju",pos="5,2.44!"]; i2:e--inzenir:w;
+i3[shape=ellipse,style=filled,fillcolor="#EEF5FC",width=3.7,height=0.45,label="Vodi evidenco materiala",pos="5,1.82!"]; i3:e--inzenir:w;
+i4[shape=ellipse,style=filled,fillcolor="#EEF5FC",width=3.7,height=0.45,label="Ustvari zahtevek za material",pos="5,1.20!"]; i4:e--inzenir:w;
+i5[shape=ellipse,style=filled,fillcolor="#EEF5FC",width=3.7,height=0.45,label="Upravlja imenik izvajalcev",pos="5,0.58!"]; i5:e--inzenir:w;
+i6[shape=ellipse,style=filled,fillcolor="#EEF5FC",width=3.7,height=0.45,label="Prijavi in spremlja napake",pos="5,-0.04!"]; i6:e--inzenir:w;
+direktor[shape=box,style="rounded,filled",fillcolor="#FDE7D3",label="Vodja podjetja\n(direktor)",pos="1.2,6.16!"];
+inzenir[shape=box,style="rounded,filled",fillcolor="#DCEBFA",label="Gradbeni inženir",pos="8.8,1.82!"];
+izvajalec[shape=box,style="rounded,dashed",label="Izvajalec\n(prejme sporočilo v Viberju)",pos="1.2,-0.04!"];
+i6:w--izvajalec:e[style=dashed];}

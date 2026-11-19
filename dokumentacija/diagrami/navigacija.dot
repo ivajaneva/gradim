@@ -1,0 +1,43 @@
+digraph NAV {
+  rankdir=TB; newrank=true; fontname="Helvetica"; nodesep=0.25; ranksep=0.35; compound=true;
+  node[fontname="Helvetica",fontsize=12,shape=box,style="rounded,filled",fillcolor="#ffffff",color="#c9ccd3",width=2.1,height=0.5];
+  edge[color="#8a8f98",arrowsize=0.7];
+  login[label="Prijava",fillcolor="#1f2430",fontcolor="#ffffff",color="#1f2430"];
+  bar[label="Spodnja navigacija – 5 zavihkov",fillcolor="#f26a1b",fontcolor="#ffffff",color="#f26a1b",width=9];
+  login -> bar;
+
+  subgraph cluster_p { label="① PROJEKTI"; fontsize=14; fontname="Helvetica-Bold"; style="rounded,filled"; fillcolor="#fff4ea"; color="#f9c9a8";
+    p01[label="01 Seznam projektov"];
+    p02[label="02 Nov projekt\n(samo direktor)",fillcolor="#fde7d3"];
+    p18[label="18 Pregled podjetja\n(samo direktor)",fillcolor="#fde7d3"];
+    p03[label="03 Pregled projekta"];
+    p04[label="04 Plan del – faze in naloge"];
+    p05[label="05 Nova naloga"];
+    p06[label="06 Podrobnosti naloge"];
+    p07[label="07 Zaključek naloge"];
+    p01->p03; p01->p02; p01->p18; p03->p04; p04->p05; p04->p06; p06->p07;
+  }
+  subgraph cluster_k { label="② KOLEDAR"; fontsize=14; fontname="Helvetica-Bold"; style="rounded,filled"; fillcolor="#eef5fc"; color="#bcd3ee";
+    k08[label="08 Koledar gradbišča"]; k09[label="09 Nov termin"]; k08->k09;
+  }
+  subgraph cluster_n { label="③ NAPAKE"; fontsize=14; fontname="Helvetica-Bold"; style="rounded,filled"; fillcolor="#fdeeee"; color="#f3c1c1";
+    n12[label="12 Seznam napak"]; n13[label="13 Podrobnosti napake"];
+    n10[label="10 Prijava napake"]; n11[label="11 Sporočilo v Viberju\n(prejme izvajalec)",style="rounded,dashed,filled"];
+    n12->n13; n12->n10; n10->n11;
+  }
+  subgraph cluster_m { label="④ MATERIAL"; fontsize=14; fontname="Helvetica-Bold"; style="rounded,filled"; fillcolor="#e9f7ee"; color="#b5e0c3";
+    m14[label="14 Pregled materiala"]; m15[label="15 Podrobnosti materiala"]; m16[label="16 Zahtevek za material"];
+    m14->m15; m14->m16;
+  }
+  subgraph cluster_i { label="⑤ IZVAJALCI"; fontsize=14; fontname="Helvetica-Bold"; style="rounded,filled"; fillcolor="#f2eefc"; color="#d2c6f2";
+    i17[label="17 Imenik izvajalcev"]; i19[label="19 Nov izvajalec\n(tudi iz kontaktov)"]; i17->i19;
+  }
+  bar -> p01; bar -> k08; bar -> n12; bar -> m14; bar -> i17;
+  {rank=same; p01; k08; n12; m14; i17;}
+
+  legend[shape=plain,fillcolor="none",label=<<table border="0" cellpadding="3"><tr><td align="left"><b>Bližnjice (hitre akcije)</b></td></tr>
+  <tr><td align="left">03 Pregled projekta → 10 Prijava napake · 16 Zahtevek za material · 09 Nov termin</td></tr>
+  <tr><td align="left">06 Podrobnosti naloge → 10 Prijava napake</td></tr>
+  <tr><td align="left"><font color="#f5b98a">■</font> zaslon samo za direktorja</td></tr></table>>];
+  p07 -> legend [style=invis];
+}
